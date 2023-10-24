@@ -2,7 +2,6 @@
 """LRUCache Module"""
 
 from base_caching import BaseCaching
-from collections import deque
 
 
 class LRUCache(BaseCaching):
