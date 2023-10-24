@@ -53,5 +53,5 @@ class Server:
         if page > total_pages:
             return []
 
-        start, end = index_range(page, page_size)
+        start, end = self.index_range(page, page_size)
         return data_set[start:end]
