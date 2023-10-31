@@ -31,7 +31,7 @@ def index():
     """Welcome page"""
     home_title = _('home_title')
     home_header = _('home_header')
-    return render_template('3-index.html',
+    return render_template('4-index.html',
                            home_title=home_title,
                            home_header=home_header)
 
