@@ -29,7 +29,7 @@ app.url_map.strict_slashes = False
 
 def get_user():
     """Returns user dictionary or None if ID cannot be found"""
-    login_id = request.args.get('login_as').strip()
+    login_id = request.args.get('login_as')
     if login_id:
         return users.get(int(login_id))
     return None
