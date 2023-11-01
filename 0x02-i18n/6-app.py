@@ -45,6 +45,11 @@ def before_request():
 @babel.localeselector
 def get_locale():
     """Get best fit local language"""
+    user = g.user
+    if user and 'locale' in user:
+        locale = user['locale']
+        if locale in app.config['LANGUAGES']:
+            return locale
     return request.args.get(
         'locale', request.accept_languages.best_match(app.config['LANGUAGES']))
 
@@ -52,7 +57,7 @@ def get_locale():
 @app.route('/')
 def index():
     """Welcome page"""
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == "__main__":
