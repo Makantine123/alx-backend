@@ -22,7 +22,7 @@ app.url_map.strict_slashes = False
 @babel.localeselector
 def get_locale():
     """Get best fit local language"""
-    locale = request.args.get('locale', None)
+    locale = request.args.get('locale', '')
     if locale in app.config['LANGUAGES']:
         return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
@@ -31,8 +31,6 @@ def get_locale():
 @app.route('/')
 def index():
     """Welcome page"""
-    home_title = _('home_title')
-    home_header = _('home_header')
     return render_template('4-index.html')
 
 

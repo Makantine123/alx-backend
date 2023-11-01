@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ home_title }}</title>
+    <title>{{ gettext('home_title') }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1>{{ home_header }}</h1>
+    <h1>{{ gettext('home_header') }}</h1>
     <p>
       {% if g.user %}
-        Welcome, {{ g.user['name'] }}
+        You are logged in as {{ g.user['name'] }}.
       {% else %}
-        Welcome to our website!
+        You are not logged in.
       {% endif %}
     </p>
   </body>

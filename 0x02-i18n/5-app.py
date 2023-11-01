@@ -2,7 +2,7 @@
 """basic Flask app module"""
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 
 class Config:
@@ -27,16 +27,19 @@ babel = Babel(app)
 app.url_map.strict_slashes = False
 
 
-def get_user(user_id):
+def get_user():
     """Returns user dictionary or None if ID cannot be found"""
-    return users.get(user_id)
+    login_id = request.args.get('login_as')
+    if login_id:
+        return users.get(int(login_id))
+    return None
 
 
 @app.before_request
 def before_request():
     """Finds user if any and set it as a global on flask.g.user"""
-    user_id = request.args.get('login_as')
-    g.user = get_user(int(user_id)) if user_id else None
+    user = get_user()
+    g.user = user
 
 
 @babel.localeselector
@@ -49,11 +52,7 @@ def get_locale():
 @app.route('/')
 def index():
     """Welcome page"""
-    home_title = _('home_title')
-    home_header = _('home_header')
-    return render_template('4-index.html',
-                           home_title=home_title,
-                           home_header=home_header)
+    return render_template('5-index.html')
 
 
 if __name__ == "__main__":
