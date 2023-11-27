@@ -1,5 +1,4 @@
 import { createClient } from "redis";
-import { redis } from "redis";
 
 const client = createClient()
 
@@ -20,6 +19,10 @@ function setNewSchool(schoolName, value) {
 
 function displaySchoolValue(schoolName) {
   client.get(schoolName, (err, reply) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
     console.log(`${reply}`);
   });
 };
