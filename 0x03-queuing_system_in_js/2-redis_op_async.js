@@ -12,7 +12,7 @@ client.on('connect', () => {
 
 
 function setNewSchool(schoolName, value) {
-  client.set(schoolName, value, print)
+  client.set(schoolName, value, print);
 };
 
 function displaySchoolValue(schoolName) {
